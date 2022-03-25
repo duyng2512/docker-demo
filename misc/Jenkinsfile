@@ -12,8 +12,11 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
+     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
        def app = docker.build("duyng2512/docker-nodejs-demo:${commit_id}", '.').push()
      }
-   }
+      
+     // https://registry.hub.docker.com
+     // https://index.docker.io/v2/
+   } 
 }
